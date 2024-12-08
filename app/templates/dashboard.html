@@ -1,0 +1,62 @@
+{% extends 'admin/base.html' %}
+
+{% block body %}
+<div class="container mt-5">
+    <div class="row">
+        <!-- User Count Card -->
+        <div class="col-md-3">
+            <div class="card text-white bg-info mb-3">
+                <div class="card-header">Users</div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ user_count }}</h5>
+                    <p class="card-text">Total Users</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Transaction Count Card -->
+        <div class="col-md-3">
+            <div class="card text-white bg-success mb-3">
+                <div class="card-header">Transactions</div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ transaction_count }}</h5>
+                    <p class="card-text">Total Transactions</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Total Sum Card -->
+        <div class="col-md-3">
+            <div class="card text-white bg-warning mb-3">
+                <div class="card-header">Total Sum Today</div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ total_sum }} ₽</h5>
+                    <p class="card-text">Total transaction amount today</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Latest Transactions Card -->
+        <div class="col-md-3">
+            <div class="card bg-danger mb-3">
+                <div class="card-header text-white">Latest Transactions</div>
+                <div class="card-body">
+                    <h5 class="card-title">Last 10</h5>
+                    <div class="transaction-div ">
+                        {% for transaction in latest_transactions %}
+                        <div class="transaction-detail">
+                            <div class="transaction-header">Transaction ID: {{ transaction.id }}</div>
+                            <div>Amount: {{ transaction.amount }} ₽</div>
+                            <div>Commission: {{ transaction.commission }} ₽</div>
+                            <div>Status: {{ transaction.status }}</div>
+                            <div>Created At: {{ transaction.created_at }}</div>
+                            <hr>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

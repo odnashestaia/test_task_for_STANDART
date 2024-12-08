@@ -1,0 +1,37 @@
+Create a new transaction
+    ---
+    tags:
+      - Transactions
+    parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          type: object
+          properties:
+            user_id:
+              type: integer
+              example: 1
+            amount:
+              type: number
+              example: 100.0
+    responses:
+      201:
+        description: Transaction created successfully
+        schema:
+          type: object
+          properties:
+            transaction_id:
+              type: integer
+              example: 123
+            commission:
+              type: number
+              example: 5.0
+      404:
+        description: User not found
+        schema:
+          type: object
+          properties:
+            error:
+              type: string
+              example: "User not found"

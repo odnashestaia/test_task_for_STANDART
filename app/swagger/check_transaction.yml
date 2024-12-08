@@ -1,0 +1,30 @@
+Check the status of a transaction
+    ---
+    tags:
+      - Transactions
+    parameters:
+      - name: transaction_id
+        in: query
+        type: integer
+        required: true
+        description: ID of the transaction
+    responses:
+      200:
+        description: Transaction status retrieved successfully
+        schema:
+          type: object
+          properties:
+            transaction_id:
+              type: integer
+              example: 123
+            status:
+              type: string
+              example: "Ожидание"
+      404:
+        description: Transaction not found
+        schema:
+          type: object
+          properties:
+            error:
+              type: string
+              example: "Transaction not found"
